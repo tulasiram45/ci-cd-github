@@ -31,8 +31,8 @@ jobs:
           docker build --tag $IMAGE_NAME .
           docker push $IMAGE_NAME          
 
-      - name: Configure Docker
-        run: gcloud auth configure-docker --quiet
+#      - name: Configure Docker
+#        run: gcloud auth configure-docker --quiet
 
       - uses: actions/checkout@master
       - name: kubectl - Google Cloud GKE cluster.

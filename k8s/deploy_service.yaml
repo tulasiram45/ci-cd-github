@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment1
+  name: myapp-deployment2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp1
+      app: myapp2
   template:
     metadata:
       labels:
-        app: myapp1
+        app: myapp2
     spec:
       containers:
-        - name: myapp-container1
+        - name: myapp-container2
           image: ghcr.io/deepak1067/myapp/myimage:latest
           ports:
             - containerPort: 8080
@@ -22,15 +22,15 @@ spec:
           resources:
           # Set resource limits and requests, if needed
       imagePullSecrets:
-        - name: gcr
+        - name: dockerconfigjson-github-com
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: myapp-service1
+  name: myapp-service2
 spec:
   selector:
-    app: myapp1
+    app: myapp2
   ports:
     - protocol: TCP
       port: 80
