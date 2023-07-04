@@ -10,8 +10,6 @@ env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   GKE_CLUSTER: deployment-cluster-sdk
   GKE_ZONE: asia-southeast1-a
-#  GKE_NAMESPACE: your-gke-namespace
-#  KUBECONFIG: ${{ secrets.GKE_KUBECONFIG }}
 
 jobs:
   deploy:
@@ -33,7 +31,6 @@ jobs:
           docker build --tag $IMAGE_NAME .
           docker push $IMAGE_NAME
 
-
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.4.0
         with:
@@ -48,6 +45,8 @@ jobs:
 
       - name: Deploy to GKE
         run: |
+          curl -LO "https://github.com/ameydev/gke-auth-plugin/releases/latest/download/gke-auth-plugin"
+          chmod +x gke-auth-plugin
+          ./gke-auth-plugin
           gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
           kubectl apply -f k8s/
-      
