@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: myapp-container1
-          image: docker.pkg.github.com/deepak1067/myapp/myimage:latest
+          image: ghcr.io/deepak1067/myapp/myimage:latest
           ports:
             - containerPort: 8080
           env:
@@ -22,7 +22,7 @@ spec:
           resources:
           # Set resource limits and requests, if needed
       imagePullSecrets:
-        - name: gcr-json-key
+        - name: gcr
 ---
 apiVersion: v1
 kind: Service
