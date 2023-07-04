@@ -43,10 +43,18 @@ jobs:
       - name: Configure Docker
         run: gcloud auth configure-docker
 
+      - name: Download gke-auth-plugin
+        run: wget "https://github.com/ameydev/gke-auth-plugin/releases/latest/download/gke-auth-plugin" -O gke-auth-plugin
+
+      - name: Make gke-auth-plugin executable
+        run: chmod +x gke-auth-plugin
+
+      - name: Run gke-auth-plugin
+        run: ./gke-auth-plugin
+
+      - name: Get GKE cluster credentials
+        run: gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
+
       - name: Deploy to GKE
         run: |
-          curl -LO "https://github.com/ameydev/gke-auth-plugin/releases/latest/download/gke-auth-plugin"
-          chmod +x gke-auth-plugin
-          ./gke-auth-plugin
-          gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
           kubectl apply -f k8s/
