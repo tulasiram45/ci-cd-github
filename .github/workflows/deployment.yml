@@ -31,9 +31,6 @@ jobs:
           docker build --tag $IMAGE_NAME .
           docker push $IMAGE_NAME          
 
-#      - name: Configure Docker
-#        run: gcloud auth configure-docker --quiet
-
       - uses: actions/checkout@master
       - name: kubectl - Google Cloud GKE cluster.
         uses: ameydev/gke-kubectl-action@master
@@ -44,52 +41,3 @@ jobs:
           ZONE_NAME: asia-southeast1-a
         with:
           args: apply -f k8s/
-
-
-
-#      - name: Set up Google Cloud SDK
-#        uses: google-github-actions/setup-gcloud@v0.4.0
-#        with:
-#          project_id: ${{ secrets.PROJECT_ID }}
-#          service_account_key: ${{ secrets.GCLOUD_AUTH }}
-#
-#      - name: Authenticate with Google Cloud
-#        run: gcloud auth activate-service-account --key-file=${{ secrets.GCLOUD_AUTH }}
-#
-#
-#      - name: Configure Docker
-#        run: gcloud auth configure-docker
-#
-#      - name: Deploy to GKE
-#        run: |
-#          gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
-#          kubectl apply -f k8s/
-
-
-#      - name: Set up Google Cloud SDK
-#        uses: google-github-actions/setup-gcloud@v0.4.0
-#        with:
-#          project_id: ${{ secrets.PROJECT_ID }}
-#          service_account_key: ${{ secrets.GKE_SA_KEY }}
-#
-#      - name: Authenticate with Google Cloud
-#        run: echo ${{ secrets.GCLOUD_AUTH }} | base64 --decode | gcloud auth activate-service-account --key-file=-
-#
-#      - name: Configure Docker
-#        run: gcloud auth configure-docker
-#
-#      - name: Download gke-auth-plugin
-#        run: wget "https://github.com/ameydev/gke-auth-plugin/releases/latest/download/gke-auth-plugin" -O gke-auth-plugin
-#
-#      - name: Make gke-auth-plugin executable
-#        run: chmod +x gke-auth-plugin
-#
-#      - name: Run gke-auth-plugin
-#        run: ./gke-auth-plugin
-#
-#      - name: Get GKE cluster credentials
-#        run: gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
-#
-#      - name: Deploy to GKE
-#        run: |
-#          kubectl apply -f k8s/
