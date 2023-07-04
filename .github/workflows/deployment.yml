@@ -33,6 +33,7 @@ jobs:
           docker build --tag $IMAGE_NAME .
           docker push $IMAGE_NAME
 
+
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.4.0
         with:
@@ -48,4 +49,6 @@ jobs:
       - name: Deploy to GKE
         run: |
           gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
-          kubectl apply -f k8s/
+#          kubectl apply -f k8s/
+        with:
+          args: apply -f k8s/
