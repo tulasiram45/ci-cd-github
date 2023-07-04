@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-final1
+  name: demoapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp-final1
+      app: demoapp
   template:
     metadata:
       labels:
-        app: myapp-final1
+        app: demoapp
     spec:
       containers:
-        - name: myapp-final1
+        - name: demoapp
           image: ghcr.io/deepak1067/myapp/myimage:latest
           ports:
             - containerPort: 8080
@@ -27,10 +27,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: myapp-service-final1
+  name: demoapp-service
 spec:
   selector:
-    app: myapp-final1
+    app: demoapp
   ports:
     - protocol: TCP
       port: 80
