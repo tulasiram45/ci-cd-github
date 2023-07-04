@@ -1,6 +1,9 @@
 name: Deploy to GKE
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 env:
   IMAGE_NAME: ghcr.io/shradhasaxena129/myapp/myimage:latest
