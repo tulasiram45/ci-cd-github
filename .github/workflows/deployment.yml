@@ -67,6 +67,6 @@ jobs:
           PROJECT_ID: ${{ secrets.PROJECT_ID }}
           APPLICATION_CREDENTIALS: ${{ secrets.GCLOUD_AUTH }}
           CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
-          ZONE_NAME: us-central1
+          ZONE_NAME: us-central1-c
         with:
           args: apply -f k8s/
