@@ -8,8 +8,8 @@ on:
 env:
   IMAGE_NAME: ghcr.io/deepak1067/myapp/myimage:latest
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
-  GKE_CLUSTER: deployment-cluster-sdk
-  GKE_ZONE: asia-southeast1-a
+  GKE_CLUSTER: example-autopilot-cluster
+  GKE_ZONE: us-central1
 
 jobs:
   setup-build-deploy:
