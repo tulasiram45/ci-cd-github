@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: demoapp
-          image: ghcr.io/deepak1067/myapp/myimage:latest
+          image: ghcr.io/tulasiram45/myapp/myimage:latest
           ports:
             - containerPort: 8080
           env:
