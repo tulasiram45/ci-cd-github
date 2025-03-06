@@ -9,7 +9,7 @@ env:
   IMAGE_NAME: ghcr.io/tulasiram45/myapp/myimage:latest
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   GKE_CLUSTER: example-autopilot-cluster
-  GKE_ZONE: us-central1
+  GKE_ZONE: us-central1-c
 
 jobs:
   setup-build-deploy:
@@ -67,6 +67,6 @@ jobs:
           PROJECT_ID: ${{ secrets.PROJECT_ID }}
           APPLICATION_CREDENTIALS: ${{ secrets.GCLOUD_AUTH }}
           CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
-          ZONE_NAME: us-central1-c
+          ZONE_NAME: us-central1
         with:
           args: apply -f k8s/
