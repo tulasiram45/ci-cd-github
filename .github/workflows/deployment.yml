@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: ghcr.io/deepak1067/myapp/myimage:latest
+  IMAGE_NAME: ghcr.io/tulasiram45/myapp/myimage:latest
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   GKE_CLUSTER: example-autopilot-cluster
   GKE_ZONE: us-central1
