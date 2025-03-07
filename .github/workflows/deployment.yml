@@ -1,9 +1,8 @@
 name: Deploy to GKE
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    branches: [ main ]
 
 env:
   IMAGE_NAME: ghcr.io/tulasiram45/myapp/myimage:latest
