@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
     branches: [ main ]
     
+defaults:
+  run:
+    working-directory: iac
+    
 jobs:
   terraform:
     name: 'Terraform'
