@@ -3,6 +3,8 @@ name: 'Terraform CI'
 on:
   workflow_dispatch:
     branches: [ main ]
+  paths:
+      - 'iac/**
     
 defaults:
   run:
