@@ -1,4 +1,4 @@
-name: 'Terraform CI'
+name: 'Terraform - Infra Create'
 
 on:
   workflow_dispatch:
